@@ -47,7 +47,10 @@
       var estado = abrir ? 'open' : 'closed';
       b.setAttribute('aria-expanded', abrir ? 'true' : 'false');
       [b, b.parentElement, item, painel].forEach(function (el) { if (el) el.setAttribute('data-state', estado); });
-      if (painel) painel.hidden = !abrir;
+      if (painel) {
+        painel.hidden = !abrir;
+        painel.style.setProperty('--radix-accordion-content-height', painel.scrollHeight + 'px');
+      }
     });
   });
 
